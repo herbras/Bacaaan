@@ -10,7 +10,7 @@ export const renderer = jsxRenderer(({ children }) => {
         <script src="https://unpkg.com/htmx.org@1.9.3"></script>
         <script src="https://unpkg.com/hyperscript.org@0.9.9"></script>
         <script src="https://cdn.tailwindcss.com"></script>
-        <title>Hono + htmx</title>
+        <title>Referensi Kutub Mahzab Syafii dan Hanbali</title>
       </head>
       <body>
         <div class="p-4">
@@ -22,24 +22,38 @@ export const renderer = jsxRenderer(({ children }) => {
   `
 })
 
-export const AddTodo = () => (
-  <form hx-post="/todo" hx-target="#todo" hx-swap="beforebegin" _="on htmx:afterRequest reset() me" class="mb-4">
-    <div class="mb-2">
-      <input name="title" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg p-2.5" />
+
+
+export const BookCard = ({ book }) => (
+  <div class="card">
+    <div class="card-header">
     </div>
-    <button class="text-white bg-blue-700 hover:bg-blue-800 rounded-lg px-5 py-2 text-center" type="submit">
-      Submit
+    <div class="card-body">
+      <h3 class="text-lg font-semibold">{book.name}</h3>
+    </div>
+    <div class="card-footer">
+      <a
+        href={book.download_url}
+        class="flex gap-2 text-primary"
+        target="_blank"
+        hx-boost="true"
+      >
+        Unduh
+      </a>
+    </div>
+  </div>
+);
+
+export const SearchForm = ({ onSearch }) => (
+  <form hx-post="/search" hx-target="#search-results" class="flex gap-3 items-center">
+    <input
+      type="text"
+      name="query"
+      placeholder="Cari buku..."
+      class="input input-bordered input-primary"
+    />
+    <button type="submit" class="btn btn-primary">
+      Cari
     </button>
   </form>
-)
-
-export const Item = ({ title, id }: { title: string; id: string }) => (
-  <p
-    hx-delete={`/todo/${id}`}
-    hx-swap="outerHTML"
-    class="flex row items-center justify-between py-1 px-4 my-1 rounded-lg text-lg border bg-gray-100 text-gray-600 mb-2"
-  >
-    {title}
-    <button class="font-medium">Delete</button>
-  </p>
-)
+);
