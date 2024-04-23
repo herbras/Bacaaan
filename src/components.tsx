@@ -1,5 +1,5 @@
-import { html } from 'hono/html'
-import { jsxRenderer } from 'hono/jsx-renderer'
+import { html } from 'hono/html';
+import { jsxRenderer } from 'hono/jsx-renderer';
 
 export const renderer = jsxRenderer(({ children }) => {
   return html`
@@ -13,28 +13,25 @@ export const renderer = jsxRenderer(({ children }) => {
         <title>Referensi Kutub Mahzab Syafii dan Hanbali</title>
       </head>
       <body>
-        <div class="p-4">
-          <h1 class="text-4xl font-bold mb-4"><a href="/">Cari Referensi Kutub Mahzab Syafii dan Hanbali</a></h1>
-          ${children}
-        </div>
+        <section class="bg-gray-50">
+          <div class="mx-auto max-w-screen-xl px-4 py-32 lg:h-screen lg:items-center">
+              ${children}
+          </div>
+        </section>
       </body>
     </html>
-  `
-})
-
-
+  `;
+});
 
 export const BookCard = ({ book }) => (
-  <div class="card">
-    <div class="card-header">
+  <div class="bg-white rounded-lg shadow-md p-4">
+    <div class="mb-4">
+      <h3 class="text-xl font-semibold">{book.name}</h3>
     </div>
-    <div class="card-body">
-      <h3 class="text-lg font-semibold">{book.name}</h3>
-    </div>
-    <div class="card-footer">
+    <div class="flex justify-end">
       <a
         href={book.download_url}
-        class="flex gap-2 text-primary"
+        class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded"
         target="_blank"
         hx-boost="true"
       >
@@ -43,16 +40,17 @@ export const BookCard = ({ book }) => (
     </div>
   </div>
 );
-
 export const SearchForm = ({ onSearch }) => (
-  <form hx-post="/search" hx-target="#search-results" class="flex gap-3 items-center">
+  <form hx-post="/search" hx-target="#search-results" class="flex flex-col md:flex-row gap-3 items-center justify-center mt-8">
     <input
       type="text"
       name="query"
       placeholder="Cari buku..."
-      class="input input-bordered input-primary"
+      class="input input-bordered w-full py-3 input-primary"
     />
-    <button type="submit" class="btn btn-primary">
+    
+    <button type="submit"         class="block w-full rounded bg-red-600 px-12 py-3 text-sm font-medium text-white shadow hover:bg-red-700 focus:outline-none focus:ring active:bg-red-500 sm:w-auto"
+>
       Cari
     </button>
   </form>

@@ -25,20 +25,26 @@ app.get('/', async (c) => {
     SELECT *
     FROM referensi
     ORDER BY RANDOM()
-    LIMIT 10;
+    LIMIT 9;
   `).all<Referensi>();
 
   const books = results;
 
   return c.render(
-    <div>
-      <SearchForm onSearch={(query) => c.redirect(`/search?query=${encodeURIComponent(query)}`)} />
-      <div id="search-results" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {books.map((book) => (
-          <BookCard key={book.id} book={book} />
-        ))}
-      </div>
-    </div>
+    <>
+    
+    <h1 class="text-3xl font-extrabold sm:text-5xl text-center">
+      Cari Referensi
+      <strong class="font-extrabold text-red-700 sm:block"> Kutub Mahzab Syafii dan Hanbali</strong>
+    </h1>
+    <SearchForm onSearch={(query) => c.redirect(`/search?query=${encodeURIComponent(query)}`)} />
+  
+    <div id="search-results" class="grid grid-cols-1 pt-5 md:grid-cols-2 lg:grid-cols-3 gap-4">
+  {books.map((book) => (
+    <BookCard key={book.id} book={book} />
+  ))}
+</div>
+  </>
   );
 });
 
