@@ -1,45 +1,10 @@
-# Todo Example
+# Biar gampang Mbuatnya, ya pake Hono dan HTMX
 
-Stack:
+## Alasan Ngebuat
 
-* Hono
-* JSX (Hono middleware)
-* htmx
-* Zod
-* Cloudflare Workers
-* Cloudflare D1
+Simple, Server doang gratis og
 
-## Usage
+## Solusi Malazz
 
-Install:
+Pake Kode Orang, ubah template, sat set sat set, copas query yg lalu, ubah env. DONE
 
-```
-npm install
-```
-
-Setup:
-
-```
-wrangler d1 create todo
-wrangler d1 execute todo --local --file=todo.sql
-```
-
-Dev:
-
-```
-npm run dev
-```
-
-Deploy:
-
-```
-npm run deploy
-```
-
-## Author
-
-Yusuke Wada
-
-## License
-
-MIT
