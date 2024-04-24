@@ -4,7 +4,7 @@
 
 Simple, Server doang gratis og
 
-## Solusi Malazz
+## Solusi Mulai Belajar
 
-Pake Kode Orang, ubah template, sat set sat set, copas query yg lalu, ubah env. DONE
-
+Dokumentasi API yang bisa kamu consume
+https://referensi.sarbeh.com/reference
